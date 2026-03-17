@@ -1,0 +1,83 @@
+{
+  "Nigeria": {
+    "Data Analytics": {
+      "open_roles": 340,
+      "growth_yoy": 18,
+      "difficulty": "Moderate"
+    },
+    "Product Management": {
+      "open_roles": 280,
+      "growth_yoy": 22,
+      "difficulty": "Hard"
+    },
+    "Web Development": {
+      "open_roles": 520,
+      "growth_yoy": 25,
+      "difficulty": "Moderate"
+    },
+    "UX/UI Design": {
+      "open_roles": 180,
+      "growth_yoy": 28,
+      "difficulty": "Moderate"
+    },
+    "Digital Marketing": {
+      "open_roles": 420,
+      "growth_yoy": 15,
+      "difficulty": "Easy"
+    }
+  },
+  "Kenya": {
+    "Data Analytics": {
+      "open_roles": 210,
+      "growth_yoy": 20,
+      "difficulty": "Moderate"
+    },
+    "Product Management": {
+      "open_roles": 150,
+      "growth_yoy": 24,
+      "difficulty": "Hard"
+    },
+    "Web Development": {
+      "open_roles": 380,
+      "growth_yoy": 27,
+      "difficulty": "Moderate"
+    },
+    "UX/UI Design": {
+      "open_roles": 120,
+      "growth_yoy": 30,
+      "difficulty": "Moderate"
+    },
+    "Digital Marketing": {
+      "open_roles": 290,
+      "growth_yoy": 17,
+      "difficulty": "Easy"
+    }
+  },
+  "India": {
+    "Data Analytics": {
+      "open_roles": 1200,
+      "growth_yoy": 21,
+      "difficulty": "Moderate"
+    },
+    "Product Management": {
+      "open_roles": 890,
+      "growth_yoy": 19,
+      "difficulty": "Hard"
+    },
+    "Web Development": {
+      "open_roles": 1800,
+      "growth_yoy": 23,
+      "difficulty": "Moderate"
+    },
+    "UX/UI Design": {
+      "open_roles": 560,
+      "growth_yoy": 26,
+      "difficulty": "Moderate"
+    },
+    "Digital Marketing": {
+      "open_roles": 1100,
+      "growth_yoy": 14,
+      "difficulty": "Easy"
+    }
+  }
+}

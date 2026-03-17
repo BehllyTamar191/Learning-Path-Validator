@@ -1,0 +1,39 @@
+{
+  "paths": [
+    {
+      "id": 1,
+      "name": "Data Analytics",
+      "description": "Learn to analyze data and build dashboards",
+      "duration_weeks": 12,
+      "required_skills": ["Excel", "SQL", "Python", "Data Visualization"]
+    },
+    {
+      "id": 2,
+      "name": "Product Management",
+      "description": "Lead product strategy and user experience",
+      "duration_weeks": 16,
+      "required_skills": ["Product Strategy", "User Research", "Analytics", "Communication"]
+    },
+    {
+      "id": 3,
+      "name": "Web Development",
+      "description": "Build web applications with modern frameworks",
+      "duration_weeks": 20,
+      "required_skills": ["HTML/CSS", "JavaScript", "Backend (Python/Node)", "Git"]
+    },
+    {
+      "id": 4,
+      "name": "UX/UI Design",
+      "description": "Design user-centered digital products",
+      "duration_weeks": 14,
+      "required_skills": ["Figma", "User Research", "Prototyping", "Design Systems"]
+    },
+    {
+      "id": 5,
+      "name": "Digital Marketing",
+      "description": "Master online marketing strategies",
+      "duration_weeks": 10,
+      "required_skills": ["SEO", "Content Marketing", "Analytics", "Social Media"]
+    }
+  ]
+}

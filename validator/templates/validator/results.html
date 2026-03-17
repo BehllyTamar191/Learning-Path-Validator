@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation Results - Learning Path Validator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background: #f5f7fa;
+            padding: 40px 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .container {
+            max-width: 900px;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .back-link {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .validation-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        .validation-badge {
+            display: inline-block;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 20px;
+        }
+        .badge-strong {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+        .badge-moderate {
+            background: linear-gradient(135deg, #f2994e 0%, #f2c94c 100%);
+        }
+        .badge-weak {
+            background: linear-gradient(135deg, #eb5757 0%, #ff6b6b 100%);
+        }
+        .confidence-score {
+            font-size: 18px;
+            color: #666;
+            margin-top: 10px;
+        }
+        .data-section {
+            margin-bottom: 40px;
+        }
+        .data-section h3 {
+            color: #333;
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .data-row:last-child {
+            border-bottom: none;
+        }
+        .data-label {
+            font-weight: 600;
+            color: #333;
+        }
+        .data-value {
+            color: #667eea;
+            font-weight: bold;
+        }
+        .sources-list {
+            list-style: none;
+            padding: 0;
+        }
+        .sources-list li {
+            padding: 10px 0;
+            color: #666;
+        }
+        .sources-list li a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        .sources-list li a:hover {
+            text-decoration: underline;
+        }
+        .alternatives {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        .alt-card {
+            background: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-left: 4px solid #667eea;
+            border-radius: 3px;
+        }
+        .alt-name {
+            font-weight: bold;
+            color: #333;
+        }
+        .alt-stats {
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        .action-buttons {
+            text-align: center;
+            margin-top: 40px;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="{% url 'home' %}" class="back-link">← Back to Validator</a>
+        
+        <div class="validation-header">
+            <div class="validation-badge badge-{{ validation_color }}">
+                {{ validation_status }}
+            </div>
+            <h1>{{ learning_path }} in {{ region }}</h1>
+            <p class="confidence-score">✓ Confidence Level: <strong>{{ confidence }}%</strong></p>
+        </div>
+        
+        <!-- Job Demand Section -->
+        <div class="data-section">
+            <h3>💼 Job Market Demand</h3>
+            <div class="data-row">
+                <span class="data-label">Open Positions</span>
+                <span class="data-value">{{ open_roles }} roles</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Year-over-Year Growth</span>
+                <span class="data-value">+{{ growth }}%</span>
+            </div>
+            {% if open_roles > 300 %}
+                <p style="color: #11998e; margin-top: 15px; font-weight: 600;">
+                    ✓ Strong job market. This path is in demand in {{ region }}.
+                </p>
+            {% elif open_roles > 100 %}
+                <p style="color: #f2994e; margin-top: 15px; font-weight: 600;">
+                    → Moderate job market. Limited opportunities but still viable.
+                </p>
+            {% else %}
+                <p style="color: #eb5757; margin-top: 15px; font-weight: 600;">
+                    ⚠ Weak job market. Consider alternatives below.
+                </p>
+            {% endif %}
+        </div>
+        
+        <!-- Salary Section -->
+        <div class="data-section">
+            <h3>💰 Salary Intelligence</h3>
+            <div class="data-row">
+                <span class="data-label">Entry-Level Range</span>
+                <span class="data-value">${{ salary_min }}K - ${{ salary_max }}K</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Currency</span>
+                <span class="data-value">{{ salary_currency }}</span>
+            </div>
+            <p style="color: #666; margin-top: 15px; font-size: 14px;">
+                💡 Average time to first role after completing this path: 2-4 months
+            </p>
+        </div>
+        
+        <!-- Path Details Section -->
+        {% if path_obj %}
+        <div class="data-section">
+            <h3>📚 Learning Path Details</h3>
+            <div class="data-row">
+                <span class="data-label">Duration</span>
+                <span class="data-value">{{ path_obj.duration_weeks }} weeks</span>
+            </div>
+            <div class="data-row">
+                <span class="data-label">Required Skills</span>
+                <span class="data-value">{{ path_obj.required_skills|length }} skills</span>
+            </div>
+            <p style="margin-top: 15px;">
+                <strong>Skills to acquire:</strong><br>
+                {% for skill in path_obj.required_skills %}
+                    <span style="display: inline-block; background: #f0f0f0; padding: 5px 10px; margin: 5px 5px 5px 0; border-radius: 3px;">{{ skill }}</span>
+                {% endfor %}
+            </p>
+        </div>
+        {% endif %}
+        
+        <!-- Sources Section -->
+        <div class="data-section">
+            <h3>📖 Data Sources & Transparency</h3>
+            <p style="color: #666; margin-bottom: 15px;">All recommendations are backed by these data sources:</p>
+            <ul class="sources-list">
+                {% for source in sources %}
+                    <li>
+                        <strong>{{ source.name }}:</strong> {{ source.description }}<br>
+                        <a href="{{ source.url }}" target="_blank">{{ source.url }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        
+        <!-- Alternatives Section -->
+        {% if alternatives %}
+        <div class="data-section">
+            <h3>🔄 Alternative Paths to Consider</h3>
+            <p style="color: #666; margin-bottom: 15px;">If you want to explore other options in {{ region }}:</p>
+            <div class="alternatives">
+                {% for alt in alternatives %}
+                    <div class="alt-card">
+                        <div class="alt-name">{{ alt.name }}</div>
+                        <div class="alt-stats">
+                            {{ alt.jobs }} open roles • +{{ alt.growth }}% growth
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+        <!-- Disclaimer Section -->
+        <div class="data-section" style="background: #f0f7ff; padding: 20px; border-radius: 5px; border-left: 4px solid #667eea;">
+            <h4>⚠️ Important Disclaimer</h4>
+            <p style="color: #666; margin: 0;">
+                This validation is AI-assisted based on available market data. It provides insights but does not guarantee job placement or salary outcomes. Individual results depend on many factors including personal effort, networking, location, and market changes. Use this as one tool in your career planning process.
+            </p>
+        </div>
+        
+        <div class="action-buttons">
+            <a href="{% url 'home' %}"><button>Try Another Path</button></a>
+            <button onclick="window.print()">Print Results</button>
+        </div>
+    </div>
+</body>
+</html>

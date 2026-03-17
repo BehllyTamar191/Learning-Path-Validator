@@ -1,0 +1,24 @@
+{
+  "sources": [
+    {
+      "name": "LinkedIn Jobs",
+      "url": "https://www.linkedin.com/jobs/",
+      "description": "Job postings data (Dec 2024)"
+    },
+    {
+      "name": "Glassdoor Salaries",
+      "url": "https://www.glassdoor.com/Salaries",
+      "description": "Salary intelligence data"
+    },
+    {
+      "name": "World Bank Labor Stats",
+      "url": "https://data.worldbank.org/topic/labor",
+      "description": "Regional employment data"
+    },
+    {
+      "name": "Government Employment Reports",
+      "url": "https://www.nigerianstat.gov.ng/",
+      "description": "Official national employment statistics"
+    }
+  ]
+}
